@@ -26,14 +26,14 @@ const MNav = () => {
       </nav>
       {open && (
         <div style={{ borderBottom: '1px solid var(--border)', padding: '12px 20px', background: 'var(--surface)' }}>
-          {['Trilhas', 'Comunidade', 'Preços', 'Entrar'].map(l => (
+          {/* ['Trilhas', 'Comunidade', 'Preços', 'Entrar'].map(l => (
             <a key={l} style={{
               display: 'block', padding: '12px 0',
               fontFamily: 'Fira Code, monospace', fontSize: 14,
               color: 'var(--text)', textDecoration: 'none',
               borderBottom: '1px solid var(--border)',
             }}>~/{l.toLowerCase()}</a>
-          ))}
+          )) */}
           <a className="btn btn-primary" style={{ marginTop: 12, padding: '12px', fontSize: 14, justifyContent: 'center', width: '100%' }}>Lista de espera</a>
         </div>
       )}
