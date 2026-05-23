@@ -158,9 +158,9 @@ const V4Salarios = () => {
             </div>
           </div>
         </div>
-        <span className="pill pill-red" style={{ background: 'rgba(204,0,0,0.2)' }}>
+        {/* <span className="pill pill-red" style={{ background: 'rgba(204,0,0,0.2)' }}>
           ver trilha de IA →
-        </span>
+        </span> */}
       </div>
     </section>
   );
@@ -333,9 +333,9 @@ const V4AI = () => (
       ))}
     </div>
 
-    <div style={{ marginTop: 32, textAlign: 'center' }}>
+    {/* <div style={{ marginTop: 32, textAlign: 'center' }}>
       <Btn variant="primary">Conhecer trilha de IA →</Btn>
-    </div>
+    </div> */}
   </section>
 );
 

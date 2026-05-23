@@ -102,10 +102,10 @@ const FAQS = [
     q: 'Tem certificado?',
     a: 'Sim. Cada trilha concluída gera um certificado digital verificável, e o portfólio dos projetos fica público no seu perfil pra mostrar pra recrutadores.',
   },
-  {
+  /* {
     q: 'E se eu travar em algum exercício?',
     a: 'Tem fórum da comunidade ativo, mentores plantonistas em horário comercial e uma biblioteca de soluções comentadas pra cada projeto.',
-  },
+  }, */
 ];
 
 // FAQ Accordion
@@ -167,10 +167,10 @@ const Nav = ({ ctaLabel = 'Ver trilhas' }) => (
   }}>
     <Logo size={18} />
     <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14 }}>
-      <a className="btn btn-ghost">Trilhas</a>
-      <a className="btn btn-ghost">Comunidade</a>
-      <a className="btn btn-ghost">Preços</a>
-      <a className="btn btn-ghost">Entrar</a>
+      {/* <a className="btn btn-ghost">Trilhas</a> */}
+      {/* <a className="btn btn-ghost">Comunidade</a> */}
+      {/* <a className="btn btn-ghost">Preços</a> */}
+      {/* <a className="btn btn-ghost">Entrar</a> */}
       <a className="btn btn-primary" style={{ padding: '10px 18px', fontSize: 14 }}>{ctaLabel}</a>
     </div>
   </nav>
