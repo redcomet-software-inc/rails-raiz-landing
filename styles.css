@@ -1,0 +1,255 @@
+/* Rails Raíz — Landing Page Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+
+:root {
+  --rails-red: #CC0000;
+  --rails-red-dark: #AA0000;
+  --bg: #F5F5F5;
+  --surface: #FFFFFF;
+  --text: #1C1C1C;
+  --text-muted: #888888;
+  --border: #E5E5E5;
+  --code-bg: #1C1C1C;
+  --code-text: #F5F5F5;
+  --code-comment: #888888;
+}
+
+[data-theme="dark"] {
+  --rails-red: #FF3333;
+  --rails-red-dark: #CC0000;
+  --bg: #0F0F0F;
+  --surface: #1C1C1C;
+  --text: #F5F5F5;
+  --text-muted: #888888;
+  --border: #2A2A2A;
+  --code-bg: #000000;
+  --code-text: #F5F5F5;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+.mono { font-family: 'Fira Code', 'JetBrains Mono', monospace; }
+
+/* Logo */
+.rr-logo {
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+.rr-logo .bracket { color: var(--rails-red); }
+.rr-logo .at { color: var(--text-muted); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--rails-red);
+  color: #FFFFFF;
+}
+.btn-primary:hover {
+  background: var(--rails-red-dark);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--rails-red);
+  border: 1.5px solid var(--rails-red);
+}
+.btn-secondary:hover {
+  background: var(--rails-red);
+  color: #FFFFFF;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  padding: 10px 16px;
+}
+.btn-ghost:hover { color: var(--rails-red); }
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+/* Pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Fira Code', monospace;
+}
+.pill-red {
+  background: rgba(204, 0, 0, 0.08);
+  color: var(--rails-red);
+}
+.pill-outline {
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* Terminal */
+.terminal {
+  background: var(--code-bg);
+  border-radius: 12px;
+  font-family: 'Fira Code', monospace;
+  color: var(--code-text);
+  overflow: hidden;
+  border: 1px solid #2A2A2A;
+}
+.terminal-bar {
+  background: #2A2A2A;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #1C1C1C;
+}
+.terminal-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: #555;
+}
+.terminal-dot.r { background: #FF5F56; }
+.terminal-dot.y { background: #FFBD2E; }
+.terminal-dot.g { background: #27C93F; }
+.terminal-title {
+  margin-left: 12px;
+  font-size: 11px;
+  color: #888;
+}
+.terminal-body {
+  padding: 18px 20px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.t-prompt { color: #888; }
+.t-cmd { color: #F5F5F5; }
+.t-out { color: #888; }
+.t-red { color: #FF5F56; }
+.t-green { color: #27C93F; }
+.t-comment { color: #555; }
+
+/* Cursor blink */
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: var(--code-text);
+  vertical-align: text-bottom;
+  animation: blink 1s steps(2) infinite;
+  margin-left: 2px;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* FAQ */
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  text-align: left;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.faq-icon {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--rails-red);
+  font-family: 'Fira Code', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.faq-item[data-open="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, padding 0.25s ease;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+.faq-item[data-open="true"] .faq-a {
+  max-height: 240px;
+  padding-bottom: 22px;
+}
+
+/* Section labels */
+.section-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  color: var(--rails-red);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Subtle red bracket motif */
+.brackets {
+  font-family: 'Fira Code', monospace;
+  color: var(--rails-red);
+}
+
+/* Reset link styles */
+a { color: inherit; }
+
+/* Hover lift for trilha cards */
+.trilha-card:hover {
+  border-color: var(--rails-red);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -16px rgba(204, 0, 0, 0.25);
+}
+
+/* Subtle grid pattern bg */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+}
