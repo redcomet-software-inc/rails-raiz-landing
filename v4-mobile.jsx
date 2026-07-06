@@ -45,6 +45,22 @@ const MHero = () => {
   const [level, setLevel] = React.useState('junior');
   const [email, setEmail] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email.includes('@')) return;
+    setSending(true);
+    setError(false);
+    try {
+      await submitToWaitlist(email);
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
+  };
   return (
     <section style={{ padding: '32px 20px 40px' }}>
       <div style={{ marginBottom: 16 }}>
@@ -97,12 +113,13 @@ const MHero = () => {
           <span style={{ fontSize: 13, fontWeight: 600 }}>Lista de espera</span>
         </div>
         {!submitted ? (
-          <form onSubmit={e => { e.preventDefault(); if (email.includes('@')) setSubmitted(true); }} style={{ display: 'grid', gap: 8 }}>
+          <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 8 }}>
             <input type="email" required placeholder="seu@email.com.br" value={email} onChange={e => setEmail(e.target.value)} style={{
               padding: '12px 14px', border: '1px solid var(--border)', borderRadius: 8,
               fontFamily: 'Fira Code, monospace', fontSize: 14, background: 'var(--bg)', color: 'var(--text)', outline: 'none',
             }} />
-            <button type="submit" className="btn btn-primary" style={{ padding: '12px', fontSize: 14, justifyContent: 'center' }}>Avise-me →</button>
+            <button type="submit" disabled={sending} className="btn btn-primary" style={{ padding: '12px', fontSize: 14, justifyContent: 'center' }}>{sending ? 'Enviando...' : 'Avise-me →'}</button>
+            {error && <div style={{ fontSize: 11, color: '#FF5F56', fontFamily: 'Fira Code, monospace' }}># deu erro ao enviar, tenta de novo</div>}
           </form>
         ) : (
           <div style={{ padding: '10px 12px', background: 'rgba(39,201,63,0.08)', border: '1px solid #27C93F', borderRadius: 8,
@@ -287,6 +304,22 @@ const MFAQ = () => (
 const MCTA = () => {
   const [email, setEmail] = React.useState('');
   const [done, setDone] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email.includes('@')) return;
+    setSending(true);
+    setError(false);
+    try {
+      await submitToWaitlist(email);
+      setDone(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
+  };
   return (
     <section style={{ padding: '40px 20px' }}>
       <div style={{ background: 'var(--text)', borderRadius: 14, padding: 28, color: '#F5F5F5', textAlign: 'center' }}>
@@ -300,12 +333,13 @@ const MCTA = () => {
           50% de desconto nos 3 primeiros meses pra quem entrar agora.
         </p>
         {!done ? (
-          <form onSubmit={e => { e.preventDefault(); if (email.includes('@')) setDone(true); }} style={{ display: 'grid', gap: 8 }}>
+          <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 8 }}>
             <input type="email" required placeholder="seu@email.com.br" value={email} onChange={e => setEmail(e.target.value)} style={{
               padding: '12px 14px', border: '1px solid #2A2A2A', borderRadius: 8,
               background: '#0F0F0F', color: '#fff', fontFamily: 'Fira Code, monospace', fontSize: 14, outline: 'none', textAlign: 'center',
             }} />
-            <button type="submit" className="btn btn-primary" style={{ padding: 12, fontSize: 14, justifyContent: 'center' }}>Entrar na lista →</button>
+            <button type="submit" disabled={sending} className="btn btn-primary" style={{ padding: 12, fontSize: 14, justifyContent: 'center' }}>{sending ? 'Enviando...' : 'Entrar na lista →'}</button>
+            {error && <div style={{ fontSize: 11, color: '#FF5F56', fontFamily: 'Fira Code, monospace' }}># deu erro ao enviar, tenta de novo</div>}
           </form>
         ) : (
           <div style={{ padding: 12, background: 'rgba(39,201,63,0.1)', border: '1px solid #27C93F', borderRadius: 8,

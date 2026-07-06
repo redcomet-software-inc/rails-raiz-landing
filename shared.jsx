@@ -1,5 +1,23 @@
 // Rails Raíz — Shared components
 
+const WAITLIST_EMAIL = 'guilherme.nunes.engineer@gmail.com';
+
+// Envia o email da lista de espera via FormSubmit.co (sem backend próprio).
+// Na primeira submissão real, o FormSubmit manda um email de confirmação
+// pro WAITLIST_EMAIL — precisa clicar no link uma vez pra ativar o endpoint.
+async function submitToWaitlist(email) {
+  const res = await fetch(`https://formsubmit.co/ajax/${WAITLIST_EMAIL}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      email,
+      _subject: 'Nova inscrição — lista de espera Rails Raíz',
+    }),
+  });
+  if (!res.ok) throw new Error('Falha ao enviar');
+  return res.json();
+}
+
 const Logo = ({ size = 18, withBrackets = true }) => (
   <span className="rr-logo" style={{ fontSize: size }}>
     {withBrackets && <span className="bracket">[</span>}
@@ -193,4 +211,4 @@ const Footer = () => (
   </footer>
 );
 
-Object.assign(window, { Logo, SectionLabel, TRILHAS, FAQS, FAQ, Terminal, Prompt, Btn, Nav, Footer });
+Object.assign(window, { Logo, SectionLabel, TRILHAS, FAQS, FAQ, Terminal, Prompt, Btn, Nav, Footer, submitToWaitlist });

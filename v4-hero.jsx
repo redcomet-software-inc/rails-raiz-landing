@@ -5,6 +5,8 @@ const V4Hero = () => {
   const [level, setLevel] = React.useState('junior');
   const [email, setEmail] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   const tabsByLevel = {
     junior: {
@@ -54,9 +56,19 @@ const V4Hero = () => {
 
   const tab = tabsByLevel[level];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email.includes('@')) setSubmitted(true);
+    if (!email.includes('@')) return;
+    setSending(true);
+    setError(false);
+    try {
+      await submitToWaitlist(email);
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -146,8 +158,8 @@ const V4Hero = () => {
                   onFocus={e => e.target.style.borderColor = 'var(--rails-red)'}
                   onBlur={e => e.target.style.borderColor = 'var(--border)'}
                 />
-                <button type="submit" className="btn btn-primary" style={{ padding: '12px 20px', fontSize: 14 }}>
-                  Avise-me →
+                <button type="submit" disabled={sending} className="btn btn-primary" style={{ padding: '12px 20px', fontSize: 14 }}>
+                  {sending ? 'Enviando...' : 'Avise-me →'}
                 </button>
               </form>
             ) : (
@@ -165,6 +177,11 @@ const V4Hero = () => {
               }}>
                 <span style={{ color: '#27C93F' }}>✓</span>
                 Você é o aluno #2.848 na lista. Vamos te avisar pelo email.
+              </div>
+            )}
+            {error && (
+              <div style={{ fontSize: 12, color: '#FF5F56', marginTop: 8, fontFamily: 'Fira Code, monospace' }}>
+                # deu erro ao enviar, tenta de novo
               </div>
             )}
             <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 8, fontFamily: 'Fira Code, monospace' }}>

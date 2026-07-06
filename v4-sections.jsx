@@ -417,6 +417,22 @@ const V4FAQ = () => {
 const V4CTA = () => {
   const [email, setEmail] = React.useState('');
   const [done, setDone] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email.includes('@')) return;
+    setSending(true);
+    setError(false);
+    try {
+      await submitToWaitlist(email);
+      setDone(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
+  };
   return (
     <section style={{ padding: '60px 0 80px' }}>
       <div style={{
@@ -444,7 +460,7 @@ const V4CTA = () => {
           nos 3 primeiros meses quando lançarmos.
         </p>
         {!done ? (
-          <form onSubmit={e => { e.preventDefault(); if (email.includes('@')) setDone(true); }}
+          <form onSubmit={handleSubmit}
             style={{ display: 'flex', gap: 8, maxWidth: 480, margin: '0 auto' }}>
             <input
               type="email"
@@ -464,8 +480,8 @@ const V4CTA = () => {
                 outline: 'none',
               }}
             />
-            <button type="submit" className="btn btn-primary" style={{ padding: '14px 24px' }}>
-              Entrar na lista →
+            <button type="submit" disabled={sending} className="btn btn-primary" style={{ padding: '14px 24px' }}>
+              {sending ? 'Enviando...' : 'Entrar na lista →'}
             </button>
           </form>
         ) : (
@@ -481,6 +497,11 @@ const V4CTA = () => {
             fontSize: 14,
           }}>
             ✓ Você é o aluno #2.848 na lista. Te avisamos no lançamento.
+          </div>
+        )}
+        {error && (
+          <div style={{ fontSize: 12, color: '#FF5F56', marginTop: 12, fontFamily: 'Fira Code, monospace' }}>
+            # deu erro ao enviar, tenta de novo
           </div>
         )}
         <div style={{ fontSize: 12, color: '#666', marginTop: 18, fontFamily: 'Fira Code, monospace' }}>
