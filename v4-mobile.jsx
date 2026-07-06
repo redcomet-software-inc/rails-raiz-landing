@@ -123,7 +123,7 @@ const MHero = () => {
           </form>
         ) : (
           <div style={{ padding: '10px 12px', background: 'rgba(39,201,63,0.08)', border: '1px solid #27C93F', borderRadius: 8,
-            fontFamily: 'Fira Code, monospace', fontSize: 13 }}>✓ Você é #2.848 na lista</div>
+            fontFamily: 'Fira Code, monospace', fontSize: 13 }}>✓ Você está na lista</div>
         )}
       </div>
     </section>
@@ -344,7 +344,7 @@ const MCTA = () => {
         ) : (
           <div style={{ padding: 12, background: 'rgba(39,201,63,0.1)', border: '1px solid #27C93F', borderRadius: 8,
             color: '#fff', fontFamily: 'Fira Code, monospace', fontSize: 13 }}>
-            ✓ Você é #2.848 na lista
+            ✓ Você está na lista
           </div>
         )}
       </div>

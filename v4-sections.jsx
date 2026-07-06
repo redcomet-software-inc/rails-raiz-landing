@@ -496,7 +496,7 @@ const V4CTA = () => {
             fontFamily: 'Fira Code, monospace',
             fontSize: 14,
           }}>
-            ✓ Você é o aluno #2.848 na lista. Te avisamos no lançamento.
+            ✓ Você está na lista. Te avisamos no lançamento.
           </div>
         )}
         {error && (
@@ -505,7 +505,7 @@ const V4CTA = () => {
           </div>
         )}
         <div style={{ fontSize: 12, color: '#666', marginTop: 18, fontFamily: 'Fira Code, monospace' }}>
-          # 2.847 já estão na lista · sem spam · cancele com um clique
+          # sem spam · cancele com um clique
         </div>
       </div>
     </section>

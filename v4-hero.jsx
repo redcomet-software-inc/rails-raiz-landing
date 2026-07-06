@@ -176,7 +176,7 @@ const V4Hero = () => {
                 gap: 8,
               }}>
                 <span style={{ color: '#27C93F' }}>✓</span>
-                Você é o aluno #2.848 na lista. Vamos te avisar pelo email.
+                Você está na lista. Vamos te avisar pelo email.
               </div>
             )}
             {error && (
@@ -185,7 +185,7 @@ const V4Hero = () => {
               </div>
             )}
             <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 8, fontFamily: 'Fira Code, monospace' }}>
-              # 2.847 já estão na lista · sem spam
+              # sem spam
             </div>
           </div>
 
